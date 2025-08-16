@@ -10,12 +10,13 @@ int main()
     if (VmbSystem::GetInstance().Startup() != VmbErrorSuccess)
     {
         throw std::runtime_error("Failed to initialize VimbaX system.");
+        return 1;
     }
-
-    std::cout << "VimbaX system initialized successfully." << std::endl;
-
-    // Always shut down before exiting
+    VmbVersionInfo_t ver{};
+    if (VmbSystem::GetInstance().QueryVersion(ver) == VmbErrorSuccess)
+    {
+        std::cout << "VimbaX version: " << ver.major << "." << ver.minor << "." << ver.patch << "\n";
+    }
+    std::cout << "VimbaX system initialized successfully.\n";
     VmbSystem::GetInstance().Shutdown();
-
-    return 0;
 }
