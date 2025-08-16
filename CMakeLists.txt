@@ -4,11 +4,8 @@ project(vimbax_minimal LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Expect VIMBAX_ROOT=/home/dbruneau/VimbaX_2025-1/api
-set(VIMBAX_ROOT $ENV{VIMBAX_ROOT})
-if(NOT VIMBAX_ROOT)
-  message(FATAL_ERROR "Set VIMBAX_ROOT to your VimbaX SDK 'api' directory")
-endif()
+# Update VIMBAX_ROOT to your location
+set(VIMBAX_ROOT "/home/dbruneau/VimbaX_2025-1/api")
 
 include_directories(${VIMBAX_ROOT}/include)
 link_directories(${VIMBAX_ROOT}/lib)
